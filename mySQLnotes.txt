@@ -22,6 +22,30 @@ SELECT * FROM productlines WHERE productLine LIKE "planes";
 -- The big advantage of LIKE is you can use % (or wildcards) inside your string
 SELECT * FROM employees WHERE lastName LIKE "%ur%";
 -- we want last names with "ur" in them and firstnames that start with "m"
+SELECT * FROM employees WHERE firstName LIKE "D%" AND lastName LIKE "%ur%";/* SELECT = I want some records/rows */
+/* After the word select comes columns you wnant
+options: * = every available column */
+/* city = i want the city column only
+city, phone = I want the city and phone columns */
+-- After the columns comes the keyword FROM
+-- After column(s) comes the table yuou want to query
+/* employees, customers, etc */
+-- always end SQL statements with a ;
+SELECT * FROM employees;
+SELECT firstName, lastName FROM employees;
+-- If you only want certain rows, you can add a where after the table name
+SELECT firstName, lastName, extension FROM employees WHERE jobTitle = "Sales Rep";
+-- We can ask for "distinct" results
+SELECT DISTINCT(jobTitle) FROM employees;
+/* WHERE clauses can have multiple conditions. Use AND and OR */
+-- USE()
+SELECT * FROM orders WHERE status = "Cancelled" OR status = "Resolved";
+SELECT * FROM orders WHERE orderDate < "2004-01-01" AND orderDate > "2003-01-01";
+/* LIKE is basically an =  */
+SELECT * FROM productlines WHERE productLine LIKE "planes";
+-- The big advantage of LIKE is you can use % (or wildcards) inside your string
+SELECT * FROM employees WHERE lastName LIKE "%ur%";
+-- we want last names with "ur" in them and firstnames that start with "m"
 SELECT * FROM employees WHERE firstName LIKE "D%" AND lastName LIKE "%ur%";
 -- After the where clause, you can add order by
 -- ORDER by expects a column and a direction (asc,desc)
@@ -49,3 +73,37 @@ SELECT AVG(quantityOrdered * priceEach) AS orderAvg From orderdetails ORDER BY o
 -- Aggregate functions are things like SUM, AVG, etc. That grab a bunch of rows and melt them into one thing
 -- You can not grab other columns
 SELECT AVG(quantityOrdered * priceEach), orderNumber as orderAverage From orderdetails ORDER BY orderAverage desc;
+
+-- SQL problem queries
+-- Problem 1
+SELECT * from employees where jobTitle = "sales rep";
+
+-- Problem 2 
+SELECT lastName, firstName, email from employees where jobTitle != "sales rep" AND officeCode = "1";
+
+-- Problem 3
+SELECT DISTINCT reportsTo FROM employee;
+
+-- Problem 4
+SELECT * from employees where firstName like "%b%" AND officeCode IN (1,3,5) AND jobTitle like "%manager%";
+
+-- Problem 5
+SELECT customerName from customers ORDER BY customerName LIMIT 10;
+
+-- Problem 6
+-- JOIN allows us to bring two tables together
+-- JOIN makes tables wider
+-- UNION makes tables taller
+SELECT * FROM payments 
+	JOIN customers ON payments.customerNumber = customers.customerNumber
+WHERE amount > 1000;
+
+-- Payments above 1k with employee sales rep name
+SELECT payments.amount, customers.customerName, employees.firstName, employees.lastName FROM payments
+INNER JOIN customers ON customers.customerNumber = payments.customerNumber
+INNER JOIN employees ON customers.salesRepEmployeeNumber = employees.employeeNumber;
+
+-- Problem 7
+SELECT SUM(amount) FROM payments WHERE customerNumber = 124;
+
+-- BONUS 
