@@ -41,3 +41,11 @@ SELECT *, quantityOrdered * priceEach FROM orderdetails;
 SELECT *, quantityOrdered * priceEach AS orderTotal From orderdetails;
 -- order them from most expensive down
 SELECT *, quantityOrdered * priceEach AS orderTotal From orderdetails ORDER BY orderTotal desc;
+-- Get all employees with office code 1,2 or 3
+SELECT * FROM employees where officeCode IN (1,2,3);
+-- Math Functions from Excel are available as well
+SELECT SUM(quantityOrdered * priceEach) AS orderTotal From orderdetails ORDER BY orderTotal desc;
+SELECT AVG(quantityOrdered * priceEach) AS orderAvg From orderdetails ORDER BY orderAvg desc;
+-- Aggregate functions are things like SUM, AVG, etc. That grab a bunch of rows and melt them into one thing
+-- You can not grab other columns
+SELECT AVG(quantityOrdered * priceEach), orderNumber as orderAverage From orderdetails ORDER BY orderAverage desc;
