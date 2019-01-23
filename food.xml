@@ -1,0 +1,50 @@
+CREATE TABLE restaurant (
+	id	int AUTO_INCREMENT primary key NOT NULL,
+	name varchar(55),
+	distance int,
+	stars int,
+	cuisine varchar(55),
+	favoriteDish varchar(55),
+	takeout varChar(3),
+	lastTimeEaten date
+);
+
+INSERT INTO restaurant (name, distance, stars, cuisine, favoriteDish, takeout, lastTimeEaten)
+VALUES 
+("Mezzaluna", 15, 5, "Italian", "Chicken Saltbocco", "yes", "2018-01-07"),
+("Lovies", 1, 4, "BBQ", "Rib Platter", "yes", "2018-01-07"),
+("Jinya", 3, 5, "Japanese", "Chicken Wonton Ramen", "yes", "2018-01-20"),
+("Chipotle", 1, 3, "fake mexican", "salad bowl", "yes", "2018-01-19"),
+("Mint", 14, 4, "Indian", "Chicken Saag", "yes", "2018-01-07"),
+("Food Terminal", 16, 3, "Cantonese", "Kari Chicken", "yes", "2018-01-19"),
+("Taco De Villa", 13, 5, "REAL Mexican", "Shrimp Quesadilla", "yes", "2018-01-18"),
+("Chik Fil A", 1, 5, "Fast Food", "Spicy Chicken Sandwich", "yes", "2018-01-01"),
+("Chin Chin", 2, 4, "Chinese", "Chicken and Broccoli", "yes", "2018-01-06"),
+("Fogo De Chao", 1, 55, "Brazillian Steakhouse", "Filet Mignon", "no", "2018-01-12");
+
+-- Problem 1
+SELECT name from restaurant WHERE stars = 5;
+
+-- Problem 2 
+SELECT favoriteDish from restaurant WHERE stars = 5;
+
+-- Problem 3
+SELECT id from restaurant WHERE name = "Mezzaluna";
+
+-- Problem 4
+SELECT * from restaurant WHERE cuisine = "BBQ";
+
+-- Problem 5
+SELECT * from restaurant WHERE takeOut = "yes";
+
+-- Problem 6
+SELECT * from restaurant WHERE takeOut = "yes" AND cuisine = "BBQ";
+
+-- Problem 7 
+SELECT * from restaurant WHERE distance < 2;
+
+-- Problem 8
+SELECT * from restaurant WHERE lastTimeEaten < "2019-01-16";
+
+-- Problem 9
+SELECT * from restaurant WHERE lastTimeEaten < "2019-01-16" AND stars = 5;
