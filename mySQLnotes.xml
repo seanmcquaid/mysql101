@@ -107,3 +107,47 @@ INNER JOIN employees ON customers.salesRepEmployeeNumber = employees.employeeNum
 SELECT SUM(amount) FROM payments WHERE customerNumber = 124;
 
 -- BONUS 
+
+
+-- JOIN = grab data from 2 tables.
+-- Join makes tables wider
+-- Union = grab more dfata and add it to your results
+-- Unions make tables taller
+
+JOIN/INNER JOIN
+Only grab results that have a match in both tables (on both sides of the ON)
+SELECT * FROM employees
+   INNER JOIN customers ON employees.employeeNumber = customers.salesRepEmployeeNumber;
+
+-- LEFT JOIN
+-- Grab everything in the LEFT Table, regardless of whether it has a match or not,
+-- and only grab data from the right table if it has a match in the left
+SELECT * FROM employees
+   LEFT JOIN customers ON employees.employeeNumber = customers.salesRepEmployeeNumber;
+
+-- RIGHT JOIN - EXACTLY the same as left join, but in reverse
+-- Grab everything in the RIGHT Table, regardless of whether it has a match or not,
+-- and only grab data from the left table if it has a match in the right
+SELECT * FROM employees
+   RIGHT JOIN customers ON employees.employeeNumber = customers.salesRepEmployeeNumber;
+
+
+-- To create a table, use:
+-- CREATE TABLE
+-- followed by the table name ()
+-- inside () you put your frield names and data types
+CREATE TABLE restaurant (
+id int(11) AUTO_INCREMENT,
+name varchar(50),
+distanceInMiles int(10),
+stars int(5),
+category varchar(20),
+favoriteDish varchar(50),
+doesTakeout varchar(5),
+lastTimeYouAteThere varchar(20),
+)
+
+To change structure
+ALTER TABLE test DROP COLUMN x
+ALTER TABLE test ADD COLUMN x int(11)
+ALTER TABLE test MODIFY COLUMN x varchar(50)
