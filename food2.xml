@@ -1,0 +1,39 @@
+CREATE DATABASE restaurant_db2;
+
+CREATE TABLE restaurant (
+	id int AUTO_INCREMENT primary key NOT NULL,
+	name varchar(55),
+	address varchar(100),
+	category varchar(55)
+);
+
+CREATE TABLE user (
+	id int AUTO_INCREMENT primary key NOT NULL,
+	name varchar(55),
+	email varchar(55),
+	total_posts int
+);
+
+CREATE TABLE review (
+	id int AUTO_INCREMENT primary key,
+	authorUserId int,
+	stars int,
+	title varchar(55),
+	review varchar(255),
+	restarauntId int
+);
+
+ALTER TABLE restaurant
+MODIFY COLUMN address varchar(255);
+
+INSERT INTO restaurant(name, address, category)
+VALUES
+();
+
+INSERT INTO user(name, email, total_posts)
+VALUES
+();
+
+INSERT INTO review(authorUserId, stars, )
+VALUES
+();
